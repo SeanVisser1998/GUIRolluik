@@ -4,6 +4,19 @@ Created on 4 Nov 2018
 @author: seanv
 
 Controller die bestuurd welke frames op het scherm getoond worden :)
+
+TODO:
+
+    Pagina voor:
+        - Control
+        - Instellingen
+        - Statistiek
+        maken
+        
+    Daadwerkelijk data uit seriele communicatie gaan gebruiken om objecten te modificeren =)
+    
+    Thats about it... :)
+        
 '''
 from tkinter import *
 
@@ -12,6 +25,8 @@ from view import main
 from view import control
 
 from view import instellingen
+
+from view import statistiek
 
 class root(Tk):
     def __init__(self, *args, **kwargs):
@@ -29,7 +44,7 @@ class root(Tk):
         
         self.frames = {}
                 
-        for F in (main.mainGUI, control.controlGUI, instellingen.instellingGUI):
+        for F in (main.mainGUI, control.controlGUI, instellingen.instellingGUI, statistiek.statistiekGUI):
             
             frame = F(scherm, self)
             

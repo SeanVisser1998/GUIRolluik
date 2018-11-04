@@ -11,6 +11,7 @@ from tkinter import ttk
 
 from view import instellingen
 from view import control
+from view import statistiek
 class mainGUI(Frame):
     
     def __init__(self, parent, controller):
@@ -20,6 +21,9 @@ class mainGUI(Frame):
         label.grid(column=1, row=0, pady=15)
         
         instelling = ttk.Button(self, text="Instellingen", command=lambda: controller.show(instellingen.instellingGUI))
+        instelling.grid(column=0, row=110, pady=15)
+        
+        instelling = ttk.Button(self, text="Statistiek", command=lambda: controller.show(statistiek.statistiekGUI))
         instelling.grid(column=1, row=110, pady=15)
 
         openAlle = ttk.Button(self, text="Open alle", command=lambda: controller.show(instellingen.instellingGUI))
