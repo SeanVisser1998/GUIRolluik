@@ -34,8 +34,9 @@ class root(Tk):
         Tk.__init__(self, *args, **kwargs)
         
         Tk.title(self, "Team Daddy - Rolluiksysteem")
-        Tk.maxsize(self, 400, 500)
-        Tk.minsize(self, 400, 500)
+        Tk.maxsize(self, 610, 350)
+        Tk.minsize(self, 610, 350)
+        Tk.config(self, background="white")
         
         scherm = Frame(self)
         scherm.grid(row=0, column=2, sticky="nsew")
