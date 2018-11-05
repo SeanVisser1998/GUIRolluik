@@ -25,7 +25,7 @@ class mainGUI(Frame):
         label.grid(column=2, row=0, pady=15)
         
         instelling = ttk.Button(self, text="Instellingen", command=lambda: controller.show(instellingen.instellingGUI))
-        instelling.grid(column=0, row=110, pady=15)
+        instelling.grid(column=5, row=0, pady=15)
         
         statistiek = ttk.Button(self, text="Statistiek", command=lambda: controller.show(statistiek.statistiekGUI))
         statistiek.grid(column=1, row=110, pady=15)
@@ -62,7 +62,7 @@ class mainGUI(Frame):
             eenheid.grid(column=0, row=rowI, ipady=5, ipadx=15, padx=5, pady=5)
             
             #Status
-            status = Button(self,bg="green")
+            status = Button(self,bg=serialSettings.status[rolluik])
             status.grid(column=1, row=rowI, ipady=1, ipadx=9, padx=5, pady=5)
             
             #Temperatuur
