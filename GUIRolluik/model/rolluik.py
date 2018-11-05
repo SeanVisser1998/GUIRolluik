@@ -42,6 +42,4 @@ def openRolluik(rolluiknummer):
     #serial = serial.Serial(comport=comport, baudrate = settings.baudrate, timeout = settings.timeout)
     #serial.Write(b'open') #moet ook 'open' zijn in C om rolluik te openen
     settings.status[rolluiknummer] = 'green'
-    print(settings.status)
-    print(rolluiknummer)
     
