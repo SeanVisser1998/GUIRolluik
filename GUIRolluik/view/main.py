@@ -73,16 +73,44 @@ class mainGUI(Frame):
             
             #Lichtintensiteit
             lichtintensiteit = Label(self, text="143 RARE UNITS", background="white")
-            lichtintensiteit.grid(column=3, row=rowI, pady=5, padx=5)
-            
-            #Controle
-            omhoog = ttk.Button(self, text=u"\u25B2", commmand=print("open"))
-            omhoog.grid(column=4, row=rowI)
-            
-            omlaag = ttk.Button(self, text=u"\u25BC", command=print("sluit"))
-            omlaag.grid(column=5, row=rowI)
-            
+            lichtintensiteit.grid(column=3, row=rowI, pady=5, padx=5)            
+           
             #Row increment :3
             rowI = rowI + 1
+            status.config(bg=serialSettings.status[rolluik])
+            
+        #Controle
+        omhoog1 = ttk.Button(self, text=u"\u25B2", command=lambda : sesam.openRolluik(0))
+        omhoog1.grid(column=4, row=5)
+            
+        omlaag1 = ttk.Button(self, text=u"\u25BC", command=lambda : sesam.sluitRolluik(0))
+        omlaag1.grid(column=5, row=5)
+        
+        omhoog2 = ttk.Button(self, text=u"\u25B2", command=lambda : sesam.openRolluik(1))
+        omhoog2.grid(column=4, row=6)
+            
+        omlaag2 = ttk.Button(self, text=u"\u25BC", command=lambda : sesam.sluitRolluik(1))
+        omlaag2.grid(column=5, row=6)
+    
+        omhoog3 = ttk.Button(self, text=u"\u25B2", command=lambda : sesam.openRolluik(2))
+        omhoog3.grid(column=4, row=7)
+            
+        omlaag3 = ttk.Button(self, text=u"\u25BC", command=lambda : sesam.sluitRolluik(2))
+        omlaag3.grid(column=5, row=7)
+        
+        omhoog4 = ttk.Button(self, text=u"\u25B2", command=lambda : sesam.openRolluik(3))
+        omhoog4.grid(column=4, row=8)
+            
+        omlaag4 = ttk.Button(self, text=u"\u25BC", command=lambda : sesam.sluitRolluik(3))
+        omlaag4.grid(column=5, row=8)
+        
+        omhoog5 = ttk.Button(self, text=u"\u25B2", command=lambda : sesam.openRolluik(4))
+        omhoog5.grid(column=4, row=9)
+            
+        omlaag5 = ttk.Button(self, text=u"\u25BC", command=lambda : sesam.sluitRolluik(4))
+        omlaag5.grid(column=5, row=9)
+        
+
+
         
         

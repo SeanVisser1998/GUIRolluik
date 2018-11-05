@@ -35,10 +35,13 @@ def sluitRolluik(rolluiknummer):
     #serial.Write(b'sluit') #moet ook 'sluit' zijn in C om rolluik te sluiten
     settings.status[rolluiknummer] = 'red'
     print(settings.status)
+    print(rolluiknummer)
 
 def openRolluik(rolluiknummer):
     #comport = settings.rolluikPoort[rolluiknummer] 
     #serial = serial.Serial(comport=comport, baudrate = settings.baudrate, timeout = settings.timeout)
     #serial.Write(b'open') #moet ook 'open' zijn in C om rolluik te openen
     settings.status[rolluiknummer] = 'green'
+    print(settings.status)
+    print(rolluiknummer)
     
