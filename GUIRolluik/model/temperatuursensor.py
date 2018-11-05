@@ -6,7 +6,7 @@ Created on 4 Nov 2018
 import serial
 from model import serialSettings as settings
 
-serial = serial.Serial(settings.comPort, baudrate = settings.baudrate, timeout = settings.timeout)
+serial = serial.Serial(settings.sensorPort, baudrate = settings.baudrate, timeout = settings.timeout)
 
 def getTemperatuur():
     serial.write(b'temperatauur') #Moet ook licht zijn in C-code
