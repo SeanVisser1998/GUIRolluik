@@ -10,6 +10,8 @@ MED_FONT = ("Verdana", 10)
 from tkinter import *
 from tkinter import ttk
 
+import time
+
 from view import instellingen
 from view import control
 from view import statistiek
@@ -21,6 +23,31 @@ class mainGUI(Frame):
     
     def __init__(self, parent, controller):
         
+         #Combined functions
+        def combine_funcs(*funcs):
+            def combined_func(*args, **kwargs):
+                for f in funcs:
+                    f(*args, **kwargs)
+            return combined_func
+        
+        def closeAll():
+            for rolluik in range(len(serialSettings.rolluikNaam)):
+                sesam.sluitRolluik(rolluik)
+            status1.config(background=serialSettings.status[0])
+            status2.config(background=serialSettings.status[1])   
+            status3.config(background=serialSettings.status[2])
+            status4.config(background=serialSettings.status[3])
+            status5.config(background=serialSettings.status[4])
+            
+        def openAll():
+            for rolluik in range(len(serialSettings.rolluikNaam)):
+                sesam.openRolluik(rolluik)
+            status1.config(background=serialSettings.status[0])
+            status2.config(background=serialSettings.status[1])   
+            status3.config(background=serialSettings.status[2])
+            status4.config(background=serialSettings.status[3])
+            status5.config(background=serialSettings.status[4])
+                
         Frame.__init__(self, parent)
         Frame.config(self, background="white")
         label = Label(self, text="Overzichtpagina", font=LARGE_FONT, background="white")
@@ -32,10 +59,10 @@ class mainGUI(Frame):
         statistiek = ttk.Button(self, text="Statistiek", command=lambda: controller.show(statistiek.statistiekGUI))
         statistiek.grid(column=1, row=110, pady=15)
 
-        openAlle = ttk.Button(self, text="Open alle", command=lambda: controller.show(instellingen.instellingGUI))
+        openAlle = ttk.Button(self, text="Open alle", command=lambda: openAll())
         openAlle.grid(column=4, row=110)
 
-        sluitAlle = ttk.Button(self, text="Sluit alle", command=lambda: controller.show(instellingen.instellingGUI))
+        sluitAlle = ttk.Button(self, text="Sluit alle", command=lambda: closeAll())
         sluitAlle.grid(column=5, row=110)
         
         
@@ -75,13 +102,6 @@ class mainGUI(Frame):
             lichtintensiteit1.grid(column=3, row=rowI, pady=5, padx=5)            
             
             rowI +=1
-            
-        #Combined functions
-        def combine_funcs(*funcs):
-            def combined_func(*args, **kwargs):
-                for f in funcs:
-                    f(*args, **kwargs)
-            return combined_func
         
         #Status
         status1 = Button(self,bg=serialSettings.status[0])
