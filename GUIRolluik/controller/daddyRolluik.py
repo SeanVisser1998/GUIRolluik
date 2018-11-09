@@ -20,6 +20,8 @@ TODO:
 '''
 from tkinter import *
 
+from model import temperatuursensor, lichtsensor, ultrasoon
+
 from view import main
 
 from view import control
@@ -55,11 +57,22 @@ class root(Tk):
         
         self.show(main.mainGUI)
 
-        
+        self.update()
     def show(self, scherm):
         
         frame = self.frames[scherm]
         frame.tkraise()
+        
+    def update(self):
+        
+        for n in range(5):
+            pass #Deze moet weg bij oplevering
+            #temperatuursensor.updateTemperatuur(n)
+            #lichtsensor.updateLichtintensiteit(n)
+            #ultrasoon.updateUltrasoon(n)
+            
+            
+        self.after(2000, self.update)
         
 app = root()
 
