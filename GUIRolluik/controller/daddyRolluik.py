@@ -66,10 +66,10 @@ class root(Tk):
     def update(self):
         
         for n in range(5):
-            pass #Deze moet weg bij oplevering
-            #temperatuursensor.updateTemperatuur(n)
-            #lichtsensor.updateLichtintensiteit(n)
-            #ultrasoon.updateUltrasoon(n)
+            #pass #Deze moet weg bij oplevering
+            temperatuursensor.updateTemperatuur(n+1)
+            #lichtsensor.updateLichtintensiteit(n+1)
+            #ultrasoon.updateUltrasoon(n+1)
             
             
         self.after(2000, self.update)

@@ -9,7 +9,7 @@ from model import serialSettings as settings
 
 def getLichtintensiteitArduino(rolluik):
     comport=settings.rolluikDict.get(rolluik)
-    daddy = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
+    daddy = serial.Serial(port= comport, baudrate = settings.baudrate, timeout = settings.timeout)
     daddy.write(b'l') #Moet ook licht zijn in C-code
     lichtintensiteit = daddy.read() #of readline().decode('ascii') als er ascii gebruikt is =)
     return lichtintensiteit

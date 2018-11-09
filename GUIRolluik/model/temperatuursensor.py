@@ -12,7 +12,7 @@ def calcTemp(temp):
 
 def getTemperatuurArduino(rolluik):
     comport=settings.rolluikDict.get(rolluik)
-    daddy = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
+    daddy = serial.Serial(port= comport, baudrate = settings.baudrate, timeout = settings.timeout)
     daddy.write(b't') #Moet ook licht zijn in C-code
     raw_temperatuur = daddy.read() #of readline().decode('ascii') als er ascii gebruikt is =)
     temperatuur = calcTemp(raw_temperatuur)
