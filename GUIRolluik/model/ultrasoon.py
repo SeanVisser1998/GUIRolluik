@@ -11,11 +11,11 @@ def getUltrasoonArduino(rolluik):
     comport=settings.rolluikDict.get(rolluik)
     serial = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
     serial.write(b'd') #Moet ook licht zijn in C-code
-    temperatuur = serial.read() #of readline().decode('ascii') als er ascii gebruikt is =)
-    return temperatuur
+    ultrasoon = serial.read() #of readline().decode('ascii') als er ascii gebruikt is =)
+    return ultrasoon
 
 def getUltrasoon(rolluik):
-    return settings.temp[rolluik-1]
+    return settings.ultra[rolluik-1]
 
 def updateUltrasoon(rolluik):
-    settings.temp[rolluik-1] = getUltrasoonArduino(rolluik)
+    settings.ultra[rolluik-1] = getUltrasoonArduino(rolluik)
