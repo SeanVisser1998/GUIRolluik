@@ -16,12 +16,18 @@ from view import instellingen
 from view import control
 from view import statistiek as daddy
 
-from model import rolluik as sesam
+from model import rolluik as sesam, temperatuursensor
 
 from model import serialSettings
+
+import threading
+
+sadi = 0
 class mainGUI(Frame):
-    
+
     def __init__(self, parent, controller):
+        
+        self.count = 0
         
          #Combined functions
         def combine_funcs(*funcs):
@@ -120,35 +126,55 @@ class mainGUI(Frame):
         status5.grid(column=1, row=9, ipady=1, ipadx=9, padx=5, pady=5)
         
         #Controle
-        omhoog1 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(0), status1.config(background=serialSettings.status[0])))
+        omhoog1 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(1), status1.config(background=serialSettings.status[0])))
         omhoog1.grid(column=4, row=5)
             
-        omlaag1 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(0), status1.config(background=serialSettings.status[0])))
+        omlaag1 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(1), status1.config(background=serialSettings.status[0])))
         omlaag1.grid(column=5, row=5)
         
-        omhoog2 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(1), status2.config(background=serialSettings.status[1])))
+        omhoog2 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(2), status2.config(background=serialSettings.status[1])))
         omhoog2.grid(column=4, row=6)
             
-        omlaag2 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(1), status2.config(background=serialSettings.status[1])))
+        omlaag2 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(2), status2.config(background=serialSettings.status[1])))
         omlaag2.grid(column=5, row=6)
     
-        omhoog3 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(2), status3.config(background=serialSettings.status[2])))
+        omhoog3 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(3), status3.config(background=serialSettings.status[2])))
         omhoog3.grid(column=4, row=7)
             
-        omlaag3 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(2), status3.config(background=serialSettings.status[2])))
+        omlaag3 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(3), status3.config(background=serialSettings.status[2])))
         omlaag3.grid(column=5, row=7)
         
-        omhoog4 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(3), status4.config(background=serialSettings.status[3])))
+        omhoog4 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(4), status4.config(background=serialSettings.status[3])))
         omhoog4.grid(column=4, row=8)
             
-        omlaag4 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(3), status4.config(background=serialSettings.status[3])))
+        omlaag4 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(4), status4.config(background=serialSettings.status[3])))
         omlaag4.grid(column=5, row=8)
         
-        omhoog5 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(4), status5.config(background=serialSettings.status[4])))
+        omhoog5 = ttk.Button(self, text=u"\u25B2", command=lambda : combine_funcs(sesam.openRolluik(5), status5.config(background=serialSettings.status[4])))
         omhoog5.grid(column=4, row=9)
             
-        omlaag5 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(4), status5.config(background=serialSettings.status[4])))
+        omlaag5 = ttk.Button(self, text=u"\u25BC", command=lambda : combine_funcs(sesam.sluitRolluik(5), status5.config(background=serialSettings.status[4])))
         omlaag5.grid(column=5, row=9)
+        sadi = 0
+        
+
+        self.update()
+        #temperatuursensor.getTemperatuurArduino(1)
+      
+    
+    def update(self):
+        
+
+        temperatuursensor.updateTemperatuur(1)
+        print(temperatuursensor.getTemperatuur(1))
+        testlabel = Label(self, text=temperatuursensor.getTemperatuur(1), background="white")
+        testlabel.grid(row=110, column=2)
+        self.after(1000, self.update)
+        
+            
+            
+
+        
         
 
 

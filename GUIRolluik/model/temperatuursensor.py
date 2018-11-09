@@ -9,14 +9,17 @@ from model import rolluik as sesam
 
 def calcTemp(temp):
     return (temp * (140/255)) -40
-
+sadi = 100
 def getTemperatuurArduino(rolluik):
-    comport=settings.rolluikDict.get(rolluik)
-    serial = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
-    serial.write(b't') #Moet ook licht zijn in C-code
-    raw_temperatuur = serial.read() #of readline().decode('ascii') als er ascii gebruikt is =)
-    temperatuur = calcTemp(raw_temperatuur)
-    return temperatuur
+    #comport=settings.rolluikDict.get(rolluik)
+    #daddy = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
+    #daddy.write(b't') #Moet ook licht zijn in C-code
+    #raw_temperatuur = daddy.read() #of readline().decode('ascii') als er ascii gebruikt is =)
+
+    global sadi
+    sadi +=100
+    print(sadi)
+    return sadi
 
 def getTemperatuur(rolluik):
     return settings.temp[rolluik-1]
