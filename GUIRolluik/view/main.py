@@ -164,6 +164,9 @@ class mainGUI(Frame):
     
     def update(self):
         
+        '''
+            Basis voor threading
+        '''
 
         temperatuursensor.updateTemperatuur(1)
         print(temperatuursensor.getTemperatuur(1))
