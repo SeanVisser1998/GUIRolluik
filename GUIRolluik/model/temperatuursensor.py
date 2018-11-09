@@ -7,11 +7,15 @@ import serial
 from model import serialSettings as settings
 from model import rolluik as sesam
 
+def calcTemp(temp):
+    return (temp * (140/255)) -40
+
 def getTemperatuurArduino(rolluik):
     comport=settings.rolluikDict.get(rolluik)
     serial = serial.Serial(comport= comport, baudrate = settings.baudrate, timeout = settings.timeout)
     serial.write(b't') #Moet ook licht zijn in C-code
-    temperatuur = serial.read() #of readline().decode('ascii') als er ascii gebruikt is =)
+    raw_temperatuur = serial.read() #of readline().decode('ascii') als er ascii gebruikt is =)
+    temperatuur = calcTemp(raw_temperatuur)
     return temperatuur
 
 def getTemperatuur(rolluik):
